@@ -8,6 +8,8 @@ for 3 minutes after buying or transferring.
 ### **Description**
 Since sandwich attacks are greatly reliant on speedy execution, the 3 minute cooldown will likely discourage them altogether. By the time the attacker can sell, their profit may have completely disappeared.
 
+For details, see MEVResistantERC20.sol, specifically the _beforeTokenTransfer and _afterTokenTransfer functions.
+
 Forked from $APE.
 
 Original Smart Contract: https://etherscan.io/address/0x4d224452801aced8b2f0aebe155379bb5d594381#code#F5#L1
