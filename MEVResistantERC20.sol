@@ -51,7 +51,7 @@ contract ERC20 is Context, IERC20, IERC20Metadata, Ownable {
 	// cannot immediately take profit. This greatly decreases the likelihood of attacks.
 	// Adjust the cooldown as needed. However, do not make it changeable as that would
 	// be a grave security issue.
-	uint constant _MEV_COOLDOWN_TIME = 3 minutes;
+	uint constant MEV_COOLDOWN_TIME = 3 minutes;
     uint256 private _totalSupply;
 
     string private _name;
@@ -380,7 +380,7 @@ contract ERC20 is Context, IERC20, IERC20Metadata, Ownable {
 		// If the to address is not in the cooldown whitelist, add a cooldown to it.
 		if (_cooldownWhitelist[to] != true) {
 			// Add a cooldown to the address receiving the tokens.
-			_cooldowns[to] = uint32(now + _MEV_COOLDOWN_TIME);
+			_cooldowns[to] = uint32(now + MEV_COOLDOWN_TIME);
 		}
 	}
 
