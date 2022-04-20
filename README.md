@@ -17,3 +17,4 @@ Original Smart Contract: https://etherscan.io/address/0x4d224452801aced8b2f0aebe
 ### **How to Use**
 1. Fork the code.
 2. Alter the cooldown as you desire. 3 minutes seemed sufficient to me, but perhaps you are satisfied with 1 minute.
+3. Add appropriate whitelists (i.e. Uniswap etc.) via the addCooldownWhitelist function (only the contract owner can do this).
