@@ -8,6 +8,8 @@ for 3 minutes after buying or transferring.
 ### **Description**
 Since sandwich attacks are greatly reliant on speedy execution, the 3 minute cooldown will likely discourage them altogether. By the time the attacker can sell, their profit may have completely disappeared.
 
+A built-in whitelist should be used to ensure that Uniswap etc. does not have the cooldown. This can be handled by calling addCooldownWhitelist by the contract owner.
+
 For details, see MEVResistantERC20.sol, specifically the _beforeTokenTransfer and _afterTokenTransfer functions.
 
 Forked from $APE.
