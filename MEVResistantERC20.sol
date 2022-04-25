@@ -353,7 +353,7 @@ contract ERC20 is Context, IERC20, IERC20Metadata, Ownable {
 		// period. If it is, prevent the transfer.
 		if (_cooldownWhitelist[from] != true) {
 			// Change the error message according to the customized cooldown time.
-			require(_cooldowns[from] <= now, "Please wait 3 minutes before transferring or selling your tokens.");
+			require(_cooldowns[from] <= uint32(now), "Please wait 3 minutes before transferring or selling your tokens.");
 		}
 	}
 
