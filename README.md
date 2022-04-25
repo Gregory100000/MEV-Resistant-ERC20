@@ -1,4 +1,4 @@
-# ** MEV Resistant ERC20 **
+# ** MEV Resistant ERC20 (Short Cooldown) **
 
 ### **Summary**
 Everyone hates sandwich attacks, except for those attacking. This ERC20 contract greatly discourages them
