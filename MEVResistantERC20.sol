@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 // OpenZeppelin Contracts v4.4.1 (token/ERC20/ERC20.sol)
 
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.14;
 
 import "./ownable.sol";
 import "./IERC20.sol";
@@ -66,9 +66,15 @@ contract ERC20 is Context, IERC20, IERC20Metadata, Ownable {
      * All two of these values are immutable: they can only be set once during
      * construction.
      */
-    constructor(string memory name_, string memory symbol_) {
+    constructor(
+        string memory name_,
+        string memory symbol_,
+        uint256 totalSupply_
+    ) {
         _name = name_;
         _symbol = symbol_;
+		// _totalSupply is set in _mint.
+        _mint(msg.sender, totalSupply_);
     }
 
     /**
@@ -353,7 +359,7 @@ contract ERC20 is Context, IERC20, IERC20Metadata, Ownable {
 		// period. If it is, prevent the transfer.
 		if (_cooldownWhitelist[from] != true) {
 			// Change the error message according to the customized cooldown time.
-			require(_cooldowns[from] <= uint32(now), "Please wait 3 minutes before transferring or selling your tokens.");
+			require(_cooldowns[from] <= uint32(block.timestamp), "Please wait 3 minutes before transferring or selling your tokens.");
 		}
 	}
 
@@ -380,7 +386,7 @@ contract ERC20 is Context, IERC20, IERC20Metadata, Ownable {
 		// If the to address is not in the cooldown whitelist, add a cooldown to it.
 		if (_cooldownWhitelist[to] != true) {
 			// Add a cooldown to the address receiving the tokens.
-			_cooldowns[to] = uint32(now + MEV_COOLDOWN_TIME);
+			_cooldowns[to] = uint32(block.timestamp + MEV_COOLDOWN_TIME);
 		}
 	}
 
